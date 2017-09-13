@@ -9,7 +9,7 @@ Settings *Settings::instance()
 
 Settings::Settings(QObject *parent) :
     QObject(parent),
-    settings("harbour-owncloud", "harbour-owncloud")
+    settings("harbour-nextcloud", "harbour-nextcloud")
 {
     m_hoststring = "https://";
     m_isHttps = true;
@@ -135,7 +135,7 @@ bool Settings::readSettings()
 
     settings.endGroup();
 
-    // Since settings are read, propagate changes to the ownCloud browser object
+    // Since settings are read, propagate changes to the nextcloud browser object
     emit settingsChanged();
     return true;
 }

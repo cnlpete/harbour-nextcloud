@@ -1,10 +1,10 @@
 [Unit]
-Description=ownCloud photo backup
+Description=nextCloud photo backup
 After=lipstick.service
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/harbour-owncloud-daemon
+ExecStart=/usr/bin/harbour-nextcloud-daemon
 Restart=always
 
 [Install]

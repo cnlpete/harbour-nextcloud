@@ -1,8 +1,10 @@
 #include "transfermanager.h"
 
-TransferManager::TransferManager(QObject *parent, OwnCloudBrowser *browser) :
+TransferManager::TransferManager(QObject *parent, NextCloudBrowser *browser) :
     QObject(parent)
 {
+    Q_ASSERT(browser != Q_NULLPTR);
+
     this->browser = browser;
 }
 
@@ -105,7 +107,7 @@ void TransferManager::enqueueUpload(QString localPath, QString remotePath)
 void TransferManager::handleDownloadCompleted()
 {
     TransferEntry* entry;
-    bool success;
+    bool success = false;
     downloadMutex.lock();
 
     if(!downloadQueue.isEmpty()) {
@@ -131,7 +133,7 @@ void TransferManager::handleDownloadCompleted()
 void TransferManager::handleUploadCompleted()
 {
     TransferEntry* entry;
-    bool success;
+    bool success = false;
     uploadMutex.lock();
 
     if(!uploadQueue.isEmpty()) {

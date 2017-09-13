@@ -6,15 +6,15 @@
 #include <QMutex>
 #include <QStandardPaths>
 
-#include "owncloudbrowser.h"
-#include "../common/src/transferentry.h"
+#include "nextcloudbrowser.h"
 #include "entryinfo.h"
+#include "../common/src/transferentry.h"
 
 class TransferManager : public QObject
 {
     Q_OBJECT
 public:
-    TransferManager(QObject *parent = 0, OwnCloudBrowser *browser = 0);
+    TransferManager(QObject *parent = 0, NextCloudBrowser *browser = 0);
 
     Q_PROPERTY(bool transfering READ isTransfering NOTIFY transferingChanged)
 
@@ -24,7 +24,7 @@ public:
     Q_INVOKABLE QVariantList getTransfers();
 
 private:
-    OwnCloudBrowser *browser;
+    NextCloudBrowser *browser;
     QQueue<TransferEntry *> downloadQueue;
     QQueue<TransferEntry *> uploadQueue;
     QMutex downloadMutex;

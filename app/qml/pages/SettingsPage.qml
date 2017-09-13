@@ -50,7 +50,7 @@ Page {
             anchors.top: pulley.bottom
             anchors.topMargin: 96
             text: qsTr("Login automatically")
-            description: qsTr("Automatically log in to your ownCloud server when starting the app", "Login automatically description")
+            description: qsTr("Automatically log in to your nextCloud server when starting the app", "Login automatically description")
             checked: settings.autoLogin
             onClicked: settings.autoLogin = checked
         }
@@ -68,7 +68,7 @@ Page {
             id: cameraUploadSwitch
             anchors.top: notificationSwitch.bottom
             text: qsTr("Camera photo backups")
-            description: qsTr("Automatically save camera photos to your ownCloud instance when on WiFi", "Camera photo backups escription")
+            description: qsTr("Automatically save camera photos to your nextCloud instance when on WiFi", "Camera photo backups escription")
             visible: daemonCtrl.daemonInstalled
             checked: settings.uploadAutomatically
             onClicked: settings.uploadAutomatically = checked

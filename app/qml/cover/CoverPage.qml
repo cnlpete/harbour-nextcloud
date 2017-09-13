@@ -10,13 +10,13 @@ CoverBackground {
 
         Image {
             id: icon
-            source: "image://theme/harbour-owncloud"
+            source: "image://theme/harbour-nextcloud"
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
         Label {
             id: label
-            text: "ownCloud"
+            text: "nextCloud"
             anchors.horizontalCenter: parent.horizontalCenter
             font.pixelSize: Theme.fontSizeSmall
         }

@@ -6,7 +6,7 @@
 class DBusHandler : public QDBusAbstractAdaptor
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "com.github.beidl.HarbourOwncloud.Daemon.Uploader")
+    Q_CLASSINFO("D-Bus Interface", "com.github.cnlpete.HarbourNextcloud.Daemon.Uploader")
     Q_PROPERTY(bool online READ online NOTIFY onlineChanged(bool))
     Q_PROPERTY(bool uploading READ uploading NOTIFY uploadingChanged(bool))
 

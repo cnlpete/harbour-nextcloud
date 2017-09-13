@@ -27,7 +27,7 @@ Page {
 
         Label {
             id: topLabel
-            text: "ownCloud"
+            text: "nextCloud"
             font.pixelSize: Theme.fontSizeLarge
             enabled: !loginInProgress
             x: (parent.width / 2) - (width / 2)

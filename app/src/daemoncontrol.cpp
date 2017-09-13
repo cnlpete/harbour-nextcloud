@@ -3,9 +3,9 @@
 DaemonControl::DaemonControl(QObject *parent) : QObject(parent)
 {
     m_uploading = false;
-    QDBusConnection::sessionBus().connect("com.github.beidl.HarbourOwncloud.Daemon",
+    QDBusConnection::sessionBus().connect("com.github.cnlpete.HarbourNextcloud.Daemon",
                                           "/",
-                                          "com.github.beidl.HarbourOwncloud.Daemon.Uploader",
+                                          "com.github.cnlpete.HarbourNextcloud.Daemon.Uploader",
                                           "uploadingChanged",
                                           this,
                                           SLOT(setUploading(bool)));
@@ -13,7 +13,7 @@ DaemonControl::DaemonControl(QObject *parent) : QObject(parent)
 
 bool DaemonControl::daemonInstalled()
 {
-    return QFile("/usr/bin/harbour-owncloud-daemon").exists();
+    return QFile("/usr/bin/harbour-nextcloud-daemon").exists();
 }
 
 bool DaemonControl::uploading()
@@ -32,9 +32,9 @@ void DaemonControl::setUploading(bool value)
 
 void DaemonControl::reloadConfig()
 {
-    QDBusMessage message = QDBusMessage::createMethodCall("com.github.beidl.HarbourOwncloud.Daemon",
+    QDBusMessage message = QDBusMessage::createMethodCall("com.github.cnlpete.HarbourNextcloud.Daemon",
                                                           "/",
-                                                          "com.github.beidl.HarbourOwncloud.Daemon.Uploader",
+                                                          "com.github.cnlpete.HarbourNextcloud.Daemon.Uploader",
                                                           "reloadConfig");
     QDBusConnection::sessionBus().send(message);
 }

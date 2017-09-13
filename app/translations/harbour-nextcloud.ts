@@ -144,11 +144,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Automatically log in to your ownCloud server when starting the app</source>
-        <comment>Login automatically description</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Notifications</source>
         <translation type="unfinished"></translation>
     </message>
@@ -162,17 +157,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Automatically save camera photos to your ownCloud instance when on WiFi</source>
-        <comment>Camera photo backups escription</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Photo backups via mobile internet connection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Also automatically backup camera photos when connected via 2G, 3G or LTE</source>
         <comment>hoto backups via mobile internet connection description</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Automatically log in to your nextCloud server when starting the app</source>
+        <comment>Login automatically description</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Automatically save camera photos to your nextCloud instance when on WiFi</source>
+        <comment>Camera photo backups escription</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -207,7 +207,7 @@
     </message>
 </context>
 <context>
-    <name>harbour-owncloud</name>
+    <name>harbour-nextcloud</name>
     <message>
         <source>Login failed</source>
         <translation type="unfinished"></translation>

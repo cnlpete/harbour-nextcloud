@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
     QObject::connect(dbusHandler, &DBusHandler::configChanged, uploader, &Uploader::settingsChanged);
 
     // We only need one instance
-    if(!QDBusConnection::sessionBus().registerService("com.github.beidl.HarbourOwncloud.Daemon") ||
+    if(!QDBusConnection::sessionBus().registerService("com.github.cnlpete.HarbourNextcloud.Daemon") ||
             !QDBusConnection::sessionBus().registerObject("/", uploader)) {
         exit(1);
     }

@@ -1,10 +1,12 @@
 [Desktop Entry]
 Type=Application
 X-Nemo-Application-Type=silica-qt5
-Icon=harbour-owncloud
-Exec=harbour-owncloud
-Name=ownCloud
+Icon=harbour-nextcloud
+Exec=harbour-nextcloud
+Name=nextCloud
 # translation example:
 # your app name in German locale (de)
-Name[de]=ownCloud
-Name[sl]=ownCloud
+Name[de]=nextCloud
+Name[sl]=nextCloud
+
+Name[de_DE]=nextCloud

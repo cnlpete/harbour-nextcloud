@@ -1,80 +1,80 @@
-#include "owncloudbrowser.h"
+#include "nextcloudbrowser.h"
 
-OwnCloudBrowser::OwnCloudBrowser(QObject *parent, Settings *settings) :
+NextCloudBrowser::NextCloudBrowser(QObject *parent, Settings *settings) :
     QObject(parent)
 {
     this->webdav = 0;
     this->settings = settings;
     this->abortIntended = false;
-    connect(settings, &Settings::settingsChanged, this, &OwnCloudBrowser::reloadSettings);
+    connect(settings, &Settings::settingsChanged, this, &NextCloudBrowser::reloadSettings);
 
     resetWebdav();
 }
 
-OwnCloudBrowser::~OwnCloudBrowser()
+NextCloudBrowser::~NextCloudBrowser()
 {
     if(webdav)
         delete webdav;
 }
 
-QWebdav* OwnCloudBrowser::getWebdav()
+QWebdav* NextCloudBrowser::getWebdav()
 {
     return webdav;
 }
 
-void OwnCloudBrowser::resetWebdav()
+void NextCloudBrowser::resetWebdav()
 {
     if(webdav) {
-        disconnect(webdav, &QWebdav::errorChanged, this, &OwnCloudBrowser::proxyHandleLoginFailed);
+        disconnect(webdav, &QWebdav::errorChanged, this, &NextCloudBrowser::proxyHandleLoginFailed);
         disconnect(&parser, 0, 0, 0);
         delete webdav;
     }
     webdav = new QWebdav();
-    connect(webdav, &QWebdav::errorChanged, this, &OwnCloudBrowser::proxyHandleLoginFailed, Qt::DirectConnection);
-    connect(&parser, &QWebdavDirParser::errorChanged, this, &OwnCloudBrowser::proxyHandleLoginFailed, Qt::DirectConnection);
+    connect(webdav, &QWebdav::errorChanged, this, &NextCloudBrowser::proxyHandleLoginFailed, Qt::DirectConnection);
+    connect(&parser, &QWebdavDirParser::errorChanged, this, &NextCloudBrowser::proxyHandleLoginFailed, Qt::DirectConnection);
 }
 
-QWebdav* OwnCloudBrowser::getNewWebdav()
+QWebdav* NextCloudBrowser::getNewWebdav()
 {
     return getNewWebDav(this->settings);
 }
 
-void OwnCloudBrowser::reloadSettings()
+void NextCloudBrowser::reloadSettings()
 {
     applySettingsToWebdav(this->settings, webdav);
 }
 
-void OwnCloudBrowser::testConnection()
+void NextCloudBrowser::testConnection()
 {
-    connect(webdav, &QWebdav::checkSslCertifcate, this, &OwnCloudBrowser::proxyHandleSslError);
-    connect(webdav, &QNetworkAccessManager::finished, this, &OwnCloudBrowser::testConnectionFinished, Qt::DirectConnection);
+    connect(webdav, &QWebdav::checkSslCertifcate, this, &NextCloudBrowser::proxyHandleSslError);
+    connect(webdav, &QNetworkAccessManager::finished, this, &NextCloudBrowser::testConnectionFinished, Qt::DirectConnection);
 
     parser.listDirectory(webdav, "/");
 }
 
-void OwnCloudBrowser::testConnectionFinished()
+void NextCloudBrowser::testConnectionFinished()
 {
     qDebug() << "BEIDL Finished";
 
-    disconnect(webdav, &QWebdav::checkSslCertifcate, this, &OwnCloudBrowser::proxyHandleSslError);
-    disconnect(webdav, &QNetworkAccessManager::finished, this, &OwnCloudBrowser::testConnectionFinished);
+    disconnect(webdav, &QWebdav::checkSslCertifcate, this, &NextCloudBrowser::proxyHandleSslError);
+    disconnect(webdav, &QNetworkAccessManager::finished, this, &NextCloudBrowser::testConnectionFinished);
 
-    connect(&parser, &QWebdavDirParser::finished, this, &OwnCloudBrowser::handleResponse);
+    connect(&parser, &QWebdavDirParser::finished, this, &NextCloudBrowser::handleResponse);
     emit loginSucceeded();
 }
 
-void OwnCloudBrowser::proxyHandleSslError(const QList<QSslError>& errors)
+void NextCloudBrowser::proxyHandleSslError(const QList<QSslError>& errors)
 {
     QSslCertificate cert = errors[0].certificate();
     emit sslCertifcateError(webdav->digestToHex(cert.digest(QCryptographicHash::Md5)),
                             webdav->digestToHex(cert.digest(QCryptographicHash::Sha1)));
 }
 
-void OwnCloudBrowser::proxyHandleLoginFailed()
+void NextCloudBrowser::proxyHandleLoginFailed()
 {
     if(!abortIntended) {
         qDebug() << "BEIDL Failed";
-        disconnect(&parser, &QWebdavDirParser::finished, this, &OwnCloudBrowser::handleResponse);
+        disconnect(&parser, &QWebdavDirParser::finished, this, &NextCloudBrowser::handleResponse);
 
         emit loginFailed();
     } else {
@@ -82,7 +82,7 @@ void OwnCloudBrowser::proxyHandleLoginFailed()
     }
 }
 
-void OwnCloudBrowser::handleResponse()
+void NextCloudBrowser::handleResponse()
 {
     deleteMutex.lock();
     QList<QWebdavItem> list = parser.getList();
@@ -113,17 +113,17 @@ void OwnCloudBrowser::handleResponse()
     deleteMutex.unlock();
 }
 
-void OwnCloudBrowser::printError(QString msg)
+void NextCloudBrowser::printError(QString msg)
 {
     qDebug() << "ERROR: " << msg;
 }
 
-QString OwnCloudBrowser::getCurrentPath()
+QString NextCloudBrowser::getCurrentPath()
 {
     return currentPath;
 }
 
-void OwnCloudBrowser::goToParentPath()
+void NextCloudBrowser::goToParentPath()
 {
     // Called when navigating back in the browser
     // Keeping path and UI in sync
@@ -146,13 +146,13 @@ void OwnCloudBrowser::goToParentPath()
     deleteMutex.unlock();
 }
 
-void OwnCloudBrowser::getDirectoryContent(QString path)
+void NextCloudBrowser::getDirectoryContent(QString path)
 {
     currentPath = path;
     parser.listDirectory(webdav, path);
 }
 
-void OwnCloudBrowser::refreshDirectoryContent()
+void NextCloudBrowser::refreshDirectoryContent()
 {
     deleteMutex.lock();
     QList<EntryInfo*> deletables = entryStack.pop();
@@ -164,22 +164,22 @@ void OwnCloudBrowser::refreshDirectoryContent()
     parser.listDirectory(webdav, currentPath);
 }
 
-void OwnCloudBrowser::makeDirectory(QString dirName)
+void NextCloudBrowser::makeDirectory(QString dirName)
 {
     QWebdav* mkdirWebdav = getNewWebdav();
-    connect(mkdirWebdav, &QNetworkAccessManager::finished, this, &OwnCloudBrowser::refreshDirectoryContent, Qt::DirectConnection);
+    connect(mkdirWebdav, &QNetworkAccessManager::finished, this, &NextCloudBrowser::refreshDirectoryContent, Qt::DirectConnection);
     connect(mkdirWebdav, &QNetworkAccessManager::finished, mkdirWebdav, &QObject::deleteLater, Qt::DirectConnection);
     mkdirWebdav->mkdir(currentPath + dirName);
 
     emit refreshStarted(currentPath);
 }
 
-void OwnCloudBrowser::remove(QString name, bool refresh)
+void NextCloudBrowser::remove(QString name, bool refresh)
 {
     qDebug() << "Removing " << name;
     QWebdav* rmWebdav = getNewWebdav();
     if(refresh)
-        connect(rmWebdav, &QNetworkAccessManager::finished, this, &OwnCloudBrowser::refreshDirectoryContent, Qt::DirectConnection);
+        connect(rmWebdav, &QNetworkAccessManager::finished, this, &NextCloudBrowser::refreshDirectoryContent, Qt::DirectConnection);
     connect(rmWebdav, &QNetworkAccessManager::finished, rmWebdav, &QObject::deleteLater, Qt::DirectConnection);
     rmWebdav->remove(name);
 

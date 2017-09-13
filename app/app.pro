@@ -10,40 +10,38 @@
 #   - translation filenames have to be changed
 
 # The name of your application
-TARGET = harbour-owncloud
+TARGET = harbour-nextcloud
 
 CONFIG += sailfishapp
 QT += xml dbus
 
-SOURCES += src/harbour-owncloud.cpp \
-    src/owncloudbrowser.cpp \
-    src/entryinfo.cpp \
-    src/transfermanager.cpp \
-    src/localfilebrowser.cpp \
+SOURCES += \
     ../common/src/settings.cpp \
     ../common/src/shellcommand.cpp \
     ../common/src/transferentry.cpp \
     ../common/src/webdav_utils.cpp \
-    src/daemoncontrol.cpp
+    src/daemoncontrol.cpp \
+    src/entryinfo.cpp \
+    src/localfilebrowser.cpp \
+    src/harbour-nextcloud.cpp \
+    src/nextcloudbrowser.cpp \
+    src/transfermanager.cpp \
 
 HEADERS += \
-    src/owncloudbrowser.h \
-    src/entryinfo.h \
-    src/transfermanager.h \
-    src/localfilebrowser.h \
     ../common/src/settings.h \
     ../common/src/shellcommand.h \
     ../common/src/transferentry.h \
     ../common/src/webdav_utils.h \
-    src/daemoncontrol.h
+    src/daemoncontrol.h \
+    src/entryinfo.h \
+    src/transfermanager.h \
+    src/localfilebrowser.h \
+    src/nextcloudbrowser.h \
+    src/transfermanager.h \
 
-OTHER_FILES += qml/harbour-owncloud.qml \
+OTHER_FILES += \
+    qml/harbour-nextcloud.qml \
     qml/cover/CoverPage.qml \
-    rpm/harbour-owncloud.changes.in \
-    rpm/harbour-owncloud.spec \
-    rpm/harbour-owncloud.yaml \
-    translations/*.ts \
-    harbour-owncloud.desktop \
     qml/pages/FileBrowser.qml \
     qml/pages/FileDetails.qml \
     qml/pages/Login.qml \
@@ -51,40 +49,45 @@ OTHER_FILES += qml/harbour-owncloud.qml \
     qml/pages/SettingsPage.qml \
     qml/pages/TransferPage.qml \
     qml/pages/UploadDialog.qml \
-    qml/pages/MkDirDialog.qml
+    qml/pages/MkDirDialog.qml \
+    rpm/harbour-nextcloud.changes.in \
+    rpm/harbour-nextcloud.spec \
+    rpm/harbour-nextcloud.yaml \
+    translations/*.ts \
+    harbour-nextcloud.desktop \
 
 # to disable building translations every time, comment out the
 # following CONFIG line
 CONFIG += sailfishapp_i18n
-TRANSLATIONS += translations/harbour-owncloud-de.ts
+TRANSLATIONS += translations/harbour-nextcloud-de.ts
 
 
-icon86.files += icons/86x86/harbour-owncloud.png
+icon86.files += icons/86x86/harbour-nextcloud.png
 icon86.path = /usr/share/icons/hicolor/86x86/apps
 INSTALLS += icon86
 
-#icon108.files += icons/108x108/harbour-owncloud.png
-#icon108.path = /usr/share/icons/hicolor/108x108/apps
-#INSTALLS += icon108
+icon108.files += icons/108x108/harbour-nextcloud.png
+icon108.path = /usr/share/icons/hicolor/108x108/apps
+INSTALLS += icon108
 
-icon128.files += icons/128x128/harbour-owncloud.png
+icon128.files += icons/128x128/harbour-nextcloud.png
 icon128.path = /usr/share/icons/hicolor/128x128/apps
 INSTALLS += icon128
 
-#icon256.files += icons/256x256/harbour-owncloud.png
-#icon256.path = /usr/share/icons/hicolor/256x256/apps
-#INSTALLS += icon256
+icon256.files += icons/256x256/harbour-nextcloud.png
+icon256.path = /usr/share/icons/hicolor/256x256/apps
+INSTALLS += icon256
 
-#iconsvg.files += icons/scalable/harbour-owncloud.svgz
+#iconsvg.files += icons/scalable/harbour-nextcloud.svgz
 #iconsvg.path = /usr/share/icons/hicolor/scalable/apps
 
 include(../notifications.pri)
 
 LIBS += $$OUT_PWD/../qwebdavlib/qwebdavlib/libqwebdav.so.1
 
-QMAKE_RPATHDIR += /usr/share/harbour-owncloud/lib
+QMAKE_RPATHDIR += /usr/share/harbour-nextcloud/lib
 
-qwebdavlib.path = /usr/share/harbour-owncloud/lib
+qwebdavlib.path = /usr/share/harbour-nextcloud/lib
 qwebdavlib.files += $$OUT_PWD/../qwebdavlib/qwebdavlib/libqwebdav.so.1
 INSTALLS += qwebdavlib
 

@@ -144,11 +144,6 @@
         <translation>Automatisch anmelden</translation>
     </message>
     <message>
-        <source>Automatically log in to your ownCloud server when starting the app</source>
-        <comment>Login automatically description</comment>
-        <translation>Automatisch anmelden, wenn die Anwendung startet</translation>
-    </message>
-    <message>
         <source>Notifications</source>
         <translation>Benachrichtigungen</translation>
     </message>
@@ -162,11 +157,6 @@
         <translation>Kamera Backup</translation>
     </message>
     <message>
-        <source>Automatically save camera photos to your ownCloud instance when on WiFi</source>
-        <comment>Camera photo backups escription</comment>
-        <translation>Speichere die Kamerabilder automatisch in deiner ownCloud when du im WLAN bist</translation>
-    </message>
-    <message>
         <source>Photo backups via mobile internet connection</source>
         <translation>Kamera Backup über Mobile Daten</translation>
     </message>
@@ -174,6 +164,16 @@
         <source>Also automatically backup camera photos when connected via 2G, 3G or LTE</source>
         <comment>hoto backups via mobile internet connection description</comment>
         <translation>Speichere deine Kamerabilder automatisch wenn du eine mobile Verbindung hast (2G, 3G, LTE)</translation>
+    </message>
+    <message>
+        <source>Automatically log in to your nextCloud server when starting the app</source>
+        <comment>Login automatically description</comment>
+        <translation>Automatisch anmelden, wenn die Anwendung startet</translation>
+    </message>
+    <message>
+        <source>Automatically save camera photos to your nextCloud instance when on WiFi</source>
+        <comment>Camera photo backups escription</comment>
+        <translation>Speichere die Kamerabilder automatisch in deiner ownCloud when du im WLAN bist</translation>
     </message>
 </context>
 <context>
@@ -207,46 +207,46 @@
     </message>
 </context>
 <context>
-    <name>harbour-owncloud</name>
+    <name>harbour-nextcloud</name>
     <message>
         <source>Login failed</source>
-        <translation>Anmelden fehlgeschlagen</translation>
+        <translation type="unfinished">Anmelden fehlgeschlagen</translation>
     </message>
     <message>
         <source>Please check your host address and credentials</source>
-        <translation>Bitte prüfe die Serveradresse und die Anmelde-Credentials</translation>
+        <translation type="unfinished">Bitte prüfe die Serveradresse und die Anmelde-Credentials</translation>
     </message>
     <message>
         <source>Upload complete</source>
-        <translation>Hochladen vollständig</translation>
+        <translation type="unfinished">Hochladen vollständig</translation>
     </message>
     <message>
         <source>%1 uploaded successfully</source>
-        <translation>%1 wurde erfolgreich hochgeladen</translation>
+        <translation type="unfinished">%1 wurde erfolgreich hochgeladen</translation>
     </message>
     <message>
         <source>Download complete</source>
-        <translation>Herunterladen vollständig</translation>
+        <translation type="unfinished">Herunterladen vollständig</translation>
     </message>
     <message>
         <source>%1 downloaded successfully</source>
-        <translation>%1 wurde erfolgreich heruntergeladen</translation>
+        <translation type="unfinished">%1 wurde erfolgreich heruntergeladen</translation>
     </message>
     <message>
         <source>Upload failed!</source>
-        <translation>Hochladen fehlgeschlagen!</translation>
+        <translation type="unfinished">Hochladen fehlgeschlagen!</translation>
     </message>
     <message>
         <source>%1 couldn&apos;t be uploaded</source>
-        <translation>%1 konnte nicht hochgeladen werden</translation>
+        <translation type="unfinished">%1 konnte nicht hochgeladen werden</translation>
     </message>
     <message>
         <source>Download failed!</source>
-        <translation>Herunterladen fehlgeschlagen!</translation>
+        <translation type="unfinished">Herunterladen fehlgeschlagen!</translation>
     </message>
     <message>
         <source>%1 couldn&apos;t be downloaded</source>
-        <translation>%1 konnte nicht heruntergeladen werden</translation>
+        <translation type="unfinished">%1 konnte nicht heruntergeladen werden</translation>
     </message>
 </context>
 </TS>

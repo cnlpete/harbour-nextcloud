@@ -1,5 +1,5 @@
-#ifndef OWNCLOUDBROWSER_H
-#define OWNCLOUDBROWSER_H
+#ifndef NEXTCLOUDBROWSER_H
+#define NEXTCLOUDBROWSER_H
 
 #include <QObject>
 
@@ -10,13 +10,13 @@
 
 #include "entryinfo.h"
 
-class OwnCloudBrowser : public QObject
+class NextCloudBrowser : public QObject
 {
     Q_OBJECT
 
 public:
-    OwnCloudBrowser(QObject* parent = 0, Settings* settings = 0);
-    ~OwnCloudBrowser();
+    NextCloudBrowser(QObject* parent = 0, Settings* settings = 0);
+    ~NextCloudBrowser();
 
     Q_INVOKABLE void testConnection();
     Q_INVOKABLE QString getCurrentPath();
@@ -60,4 +60,4 @@ public:
 
 };
 
-#endif // OWNCLOUDBROWSER_H
+#endif // NEXTCLOUDBROWSER_H
